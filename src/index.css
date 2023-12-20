@@ -66,3 +66,7 @@ input-container input::placeholder {
   background-color: #cacaca;
 }
 
+.upload-image {
+  text-align: center;
+}
+
