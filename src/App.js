@@ -3,6 +3,7 @@ import Modal from "./components/Modal";
 
 const App = () => {
 
+  const [images, setImages] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [modalOpen, setModalOpen] = useState(true);
 
@@ -47,7 +48,11 @@ const App = () => {
           to edit.
         </p>
         {modalOpen && <div className="overlay">
-          <Modal />
+          <Modal
+            setModalOpen={setModalOpen}
+            setSelectedImage={setSelectedImage}
+            selectedImage={selectedImage}
+          />
         </div>}
       </section>
     </div>
