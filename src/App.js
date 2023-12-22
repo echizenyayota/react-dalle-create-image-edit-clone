@@ -1,8 +1,10 @@
 import { useState } from "react";
+import Modal from "./components/Modal";
 
 const App = () => {
 
   const [selectedImage, setSelectedImage] = useState(null);
+  const [modalOpen, setModalOpen] = useState(true);
 
   const uploadImage = async(e) => {
 
@@ -41,10 +43,12 @@ const App = () => {
           <span>
             <label htmlFor="files">Upload an image </label>
             <input onChange={uploadImage} id="files" accept="image/*" type="file" hidden />
-            to edit.
           </span>
+          to edit.
         </p>
-
+        {modalOpen && <div className="overlay">
+          <Modal />
+        </div>}
       </section>
     </div>
   );
