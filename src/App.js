@@ -1,4 +1,29 @@
+import { useState } from "react";
+
 const App = () => {
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const uploadImage = async(e) => {
+
+    console.log(e.target.files[0]);
+
+    const formatData = new FormData();
+    formatData.append('file', e.target.files[0]);
+    setSelectedImage(e.target.files[0]);
+
+    try {
+      const options = {
+        method: "POST",
+        body: formatData,
+      };
+      const response = await fetch('http://localhost:8000/upload', options);
+      const data = await response.json();
+      console.log(data);
+    } catch(err) {
+      console.error(err);
+    } 
+  }
 
   return (
     <div className="app">
@@ -15,7 +40,7 @@ const App = () => {
         <p className="upload-image">
           <span>
             <label htmlFor="files">Upload an image </label>
-            <input id="files" accept="image/*" type="file" hidden />
+            <input onChange={uploadImage} id="files" accept="image/*" type="file" hidden />
             to edit.
           </span>
         </p>
