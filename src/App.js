@@ -3,17 +3,20 @@ import Modal from "./components/Modal";
 
 const App = () => {
 
+  const [error, setError] = useState(null);
   const [images, setImages] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const uploadImage = async(e) => {
+  const uploadImage = async (e) => {
 
     console.log(e.target.files[0]);
 
     const formatData = new FormData();
     formatData.append('file', e.target.files[0]);
+    setModalOpen(true);
     setSelectedImage(e.target.files[0]);
+    e.target.value = null;
 
     try {
       const options = {
@@ -28,6 +31,29 @@ const App = () => {
     } 
   }
 
+  const editImage = async () => {
+    setImages(null);
+    if (selectedImage === null) {
+      setError("Error! Must have an existing image");
+      setModalOpen(false);
+      return;
+    }
+
+    try {
+      const options = {
+        method: "POST",
+      }
+      const response = await fetch('http://localhost:8000/edit_image', options);
+      const data = await response.json();
+      console.log(data);
+      setImages(data);
+      setError(null);
+      setModalOpen(false);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="app">
       <section className="prompt-section">
@@ -36,7 +62,7 @@ const App = () => {
           <input 
             placeholder="An impression oil painting of a sunflower in a purple vase..."
           />
-          <button>Edit</button>
+          <button onClick={editImage}>Edit</button>
         </div>
       </section>
       <section className="image-section">
