@@ -1,7 +1,13 @@
+import { useState } from "react";
+
 const App = () => {
 
-  const uploadImage = () => {
-    
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const uploadImage = (e) => {
+    const formData = new FormData();
+    formData.append('file', e.target.files[0]);
+    setSelectedImage(e.target.files[0]);
   }
 
   return (
