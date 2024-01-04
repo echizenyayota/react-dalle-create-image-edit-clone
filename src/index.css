@@ -1,0 +1,19 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fbefef;
+  color: #777;
+  display: flex;
+  justify-content: center;
+}
+
+.upload-image {
+  padding-top: 80px;
+}
+
