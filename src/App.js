@@ -33,7 +33,10 @@ const App = () => {
           to edit.
         </span>
         {modalOpen && <div className="overlay">
-          <Modal />
+          <Modal 
+            setModalOpen={setModalOpen}
+            setSelectedImage={setSelectedImage}
+          />
         </div>}
       </div>
     </div>

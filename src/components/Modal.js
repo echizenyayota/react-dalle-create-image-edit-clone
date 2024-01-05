@@ -1,13 +1,18 @@
 import { useState } from "react";
 
 
-const Modal = () => {
+const Modal = ({ setModalOpen, setSelectedImage}) => {
 
   const [error, setError] = useState(null);
 
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedImage(null);
+  }
+
   return(
     <div className="modal">
-      <div></div>
+      <div onClick={closeModal}>X</div>
     </div>
   );
 }
