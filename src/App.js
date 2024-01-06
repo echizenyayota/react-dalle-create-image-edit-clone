@@ -29,13 +29,14 @@ const App = () => {
       <div className="upload-image">
         <span>
           <label htmlFor="files">Upload an image </label>
-          <input onChange={uploadImage} id="files" accept="imgae/*" type="file" hidden />
+          <input onChange={uploadImage} id="files" accept="image/*" type="file" hidden />
           to edit.
         </span>
         {modalOpen && <div className="overlay">
           <Modal 
             setModalOpen={setModalOpen}
             setSelectedImage={setSelectedImage}
+            selectedImage={selectedImage}
           />
         </div>}
       </div>
