@@ -41,7 +41,7 @@ body {
   flex-direction: column;
 }
 
-.modal textarea {
+.modal input {
   padding: 20px;
 }
 

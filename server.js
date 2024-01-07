@@ -48,7 +48,7 @@ app.post("/upload", (req, res) => {
   });
 });
 
-app.post("editImage", async(req, res) => {
+app.post("/editImage", async(req, res) => {
   try {
     const image = await openai.images.edit({
       image: fs.createReadStream(filePath),

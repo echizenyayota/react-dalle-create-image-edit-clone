@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 const Modal = ({ setModalOpen, setSelectedImage, selectedImage}) => {
 
   const [error, setError] = useState(null);
+  const [value, setValue] = useState(null);
   const ref = useRef(null);
   
   console.log('selectedImage', selectedImage);
@@ -28,7 +29,7 @@ const Modal = ({ setModalOpen, setSelectedImage, selectedImage}) => {
         {selectedImage && <img ref={ref} src={URL.createObjectURL(selectedImage)} alt="uploaded image" />}
       </div>
       <p>{error || "* Image must be 256 * 256!"}</p>
-      {! error && <textarea />}
+      {! error && <input value={value} onChange={(e) => setValue(e.target.value)}/>}
       {! error && <button onClick={checkSize}>Send</button>}
       {error && <button onClick={closeModal}>Close this and try again</button>}
     </div>

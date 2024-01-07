@@ -31,9 +31,6 @@ const App = () => {
     try {
       const options = {
         method: "POST",
-        body: JSON.stringify({
-          message: value,
-        }), 
       }
       const response = await fetch('http://localhost:8000/editImage', options);
       const data = await response.json();
