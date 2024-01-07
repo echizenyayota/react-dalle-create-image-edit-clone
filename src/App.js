@@ -4,6 +4,7 @@ import Modal from "./components/Modal";
 const App = () => {
 
   const [images, setImages] = useState(null);
+  const [error, setError] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -28,6 +29,12 @@ const App = () => {
 
   const generateEditImage = async () => {
     try {
+      const options = {
+        method: "POST",
+        body: JSON.stringify({
+          message: value,
+        }), 
+      }
       const response = await fetch('http://localhost:8000/editImage', options);
       const data = await response.json();
       console.log(data);
