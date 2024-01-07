@@ -9,6 +9,7 @@ const App = () => {
   const uploadImage = async(e) => {
     const formData = new FormData();
     formData.append('file', e.target.files[0]);
+    setModalOpen(true);
     setSelectedImage(e.target.files[0]);
 
     try {
