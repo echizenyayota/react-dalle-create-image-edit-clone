@@ -3,6 +3,7 @@ import Modal from "./components/Modal";
 
 const App = () => {
 
+  const [images, setImages] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -25,6 +26,18 @@ const App = () => {
     }
   }
 
+  const generateEditImage = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/editImage', options);
+      const data = await response.json();
+      console.log(data);
+      setImages(data);
+      setError(null);
+    } catch(error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className="app">
       <div className="upload-image">
@@ -38,6 +51,7 @@ const App = () => {
             setModalOpen={setModalOpen}
             setSelectedImage={setSelectedImage}
             selectedImage={selectedImage}
+            generateEditImage={generateEditImage}
           />
         </div>}
       </div>

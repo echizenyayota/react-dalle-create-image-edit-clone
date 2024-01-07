@@ -15,7 +15,7 @@ const Modal = ({ setModalOpen, setSelectedImage, selectedImage}) => {
 
   const checkSize = () => {
     if (ref.current.width === 256 && ref.current.height === 256) {
-      // getEditImage();
+      // generateEditImage();
     } else {
       setError('Error: Choose 256 * 256 image');
     }
