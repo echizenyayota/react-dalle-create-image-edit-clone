@@ -52,7 +52,7 @@ app.post("/editImage", async(req, res) => {
   try {
     const image = await openai.images.edit({
       image: fs.createReadStream(filePath),
-      prompt: req.body.message,
+      prompt: "Let the ice cream replace the cake.",
     });
   
   } catch (error) {

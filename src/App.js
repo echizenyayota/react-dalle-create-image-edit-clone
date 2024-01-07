@@ -13,6 +13,7 @@ const App = () => {
     formData.append('file', e.target.files[0]);
     setModalOpen(true);
     setSelectedImage(e.target.files[0]);
+    e.target.value = null;
 
     try {
       const options = {
@@ -28,15 +29,25 @@ const App = () => {
   }
 
   const generateEditImage = async () => {
+    setImages(null);
+
+    if (selectedImage === null) {
+      setError('Error! Must have an existing image');
+      setModalOpen(false);
+      return;
+    }
+
     try {
       const options = {
         method: "POST",
+        body: "Let the ice cream replace the cake.", 
       }
       const response = await fetch('http://localhost:8000/editImage', options);
       const data = await response.json();
       console.log(data);
       setImages(data);
       setError(null);
+      setModalOpen(false);
     } catch(error) {
       console.error(error);
     }
