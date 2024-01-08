@@ -9,6 +9,7 @@ const App = () => {
   const uploadImage = async(e) => {
     const formData = new FormData();
     formData.append('file', e.target.files[0]);
+    setModalOpen(true);
     setSelectedImage(e.target.files[0]);
 
     try {
@@ -29,13 +30,14 @@ const App = () => {
       <div className="upload-image">
         <span>
           <label htmlFor="files">Upload an image </label>
-          <input onChange={uploadImage} id="files" accept="imgae/*" type="file" hidden />
+          <input onChange={uploadImage} id="files" accept="image/*" type="file" hidden />
           to edit.
         </span>
         {modalOpen && <div className="overlay">
           <Modal 
             setModalOpen={setModalOpen}
             setSelectedImage={setSelectedImage}
+            selectedImage={selectedImage}
           />
         </div>}
       </div>
