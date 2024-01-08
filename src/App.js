@@ -4,7 +4,7 @@ import Modal from "./components/Modal";
 const App = () => {
 
   const [selectedImage, setSelectedImage] = useState(null);
-  const [modalOpen, setModalOpen] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const uploadImage = async(e) => {
     const formData = new FormData();

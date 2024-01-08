@@ -17,3 +17,41 @@ body {
   padding-top: 80px;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal {
+  position: relative;
+  z-index: 100;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal input {
+  padding: 20px;
+}
+
+.modal button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.modal button:active {
+  background-color: #fafafc;
+}
