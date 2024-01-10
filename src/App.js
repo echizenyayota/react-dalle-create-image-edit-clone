@@ -31,7 +31,13 @@ const App = () => {
     try {
       const options = {
         method: "POST",
-        body: "Have the ice cream that the girls have switch cakes",
+        // body: "Have the ice cream that the girls have switch cakes",
+        body: JSON.stringify({
+          message: "Have the ice cream that the girls have switch cakes",
+        }),
+        headers: {
+          "Content-type": "application/json"
+        },
       };
       const response = await fetch('http://localhost:8000/editImage', options);
       const data = await response.json();
