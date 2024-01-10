@@ -31,9 +31,9 @@ const App = () => {
     try {
       const options = {
         method: "POST",
-        // body: "Have the ice cream that the girls have switch cakes",
+        // body: "Make the background in the picture a busy street",
         body: JSON.stringify({
-          message: "Have the ice cream that the girls have switch cakes",
+          message: "Make the background in the picture a beach",
         }),
         headers: {
           "Content-type": "application/json"
@@ -42,7 +42,7 @@ const App = () => {
       const response = await fetch('http://localhost:8000/editImage', options);
       const data = await response.json();
       console.log(data);
-      setImages(data);
+      setImages(data.data);
       setError(null)
     } catch(error) {
       console.error(error);
