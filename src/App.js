@@ -42,7 +42,7 @@ const App = () => {
       const response = await fetch('http://localhost:8000/editImage', options);
       const data = await response.json();
       console.log(data);
-      const imageUrl = data.url;
+      const imageUrl = data.data[0].url;
       setImages(imageUrl); 
       setError(null);
       setModalOpen(false);
