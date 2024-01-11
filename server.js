@@ -53,11 +53,12 @@ app.post("/editImage", async(req, res) => {
   try {
     const image = await openai.images.edit({
       image: fs.createReadStream(filePath),
-      prompt: "Make the background in the picture a beach",
+      prompt: req.body.message,
     });
     res.status(200).json(image);
   } catch(error) {
     console.error(error);
+    res.status(500).json({ error: error.message });
   }
 });
 

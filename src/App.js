@@ -43,7 +43,8 @@ const App = () => {
       const data = await response.json();
       console.log(data);
       setImages(data.data);
-      setError(null)
+      setError(null);
+      setModalOpen(false);
     } catch(error) {
       console.error(error);
     }
