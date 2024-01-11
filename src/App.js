@@ -27,13 +27,13 @@ const App = () => {
     }
   }
 
-  const generateEditImage = async () => {
+  const generateEditImage = async (userPrompt) => {
     try {
       const options = {
         method: "POST",
         // body: "Make the background in the picture a busy street",
         body: JSON.stringify({
-          message: "Make the background in the picture a beach",
+          message: userPrompt,
         }),
         headers: {
           "Content-type": "application/json"
