@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage }).single('file');
-let filePath;
+// let filePath;
 
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -44,20 +44,28 @@ app.post("/upload", (req, res) => {
     } else if(err) {
       return res.status(500).json(err);
     }
-    filePath = req.file.path;
-    res.status(200).json({ filePath: req.file.path });
+    const filePath = req.file.path;
+    res.status(200).json({ filePath: filePath });
   });
 });
 
 app.post("/editImage", async(req, res) => {
   try {
+    console.log('Received editImage request body:', req.body);
+    const filePath = req.body.filePath;
+    if (!filePath) {
+      throw new Error('No file path provided');
+    }
+
     const image = await openai.images.edit({
       image: fs.createReadStream(filePath),
-      prompt: "Make the background in the picture a beach",
+      prompt: req.body.message,
     });
+    console.log('Sending back image response');
     res.status(200).json(image);
   } catch(error) {
     console.error(error);
+    res.status(500).json({ error: error.message });
   }
 });
 
