@@ -42,7 +42,8 @@ const App = () => {
       const response = await fetch('http://localhost:8000/editImage', options);
       const data = await response.json();
       console.log(data);
-      setImages(data.data);
+      const imageUrl = data.url;
+      setImages(imageUrl); 
       setError(null);
       setModalOpen(false);
     } catch(error) {
@@ -58,6 +59,9 @@ const App = () => {
           <input onChange={uploadImage} id="files" accept="image/*" type="file" hidden />
           to edit.
         </span>
+        <div className="edit-image">
+          {images && <img src={images} alt="Edited Image" />}
+        </div>
         {modalOpen && <div className="overlay">
           <Modal 
             setModalOpen={setModalOpen}
